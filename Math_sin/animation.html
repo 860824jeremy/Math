@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="planet"></div>
+        <div class="planet planetA"></div>
+        <div class="planet planetB"></div>
+    </body>
+</html>
+
+<style>
+    .planet {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+        background-color: rgb(227, 215, 158);
+    }
+
+    .planetA {
+        width: 50px;
+        height: 50px;
+        background-color: cadetblue;
+    }
+
+    .planetB {
+        width: 30px;
+        height: 30px;
+        background-color: brown;
+    }
+</style>
+<script>
+    const planet = document.querySelector(".planet");
+    const planetA = document.querySelector(".planetA");
+    const planetB = document.querySelector(".planetB");
+
+    const TranslateA = {
+        r: 300,
+        x: 0,
+        y: 0,
+        a: 0,
+    };
+    const TranslateB = {
+        r: 120,
+        x: 0,
+        y: 0,
+        a: 0,
+    };
+    setInterval(() => {
+        TranslateA.a++;
+        TranslateA.x = TranslateA.r * Math.cos(TranslateA.a / 50);
+        TranslateA.y = TranslateA.r * Math.sin(TranslateA.a / 50);
+        planetA.style.transform = `translate(${TranslateA.x}px, ${TranslateA.y}px)`;
+    }, 16);
+    setInterval(() => {
+        TranslateB.a++;
+        TranslateB.x = TranslateB.r * Math.cos(TranslateB.a / 40);
+        TranslateB.y = TranslateB.r * Math.sin(TranslateB.a / 40);
+        planetB.style.transform = `translate(${TranslateB.x}px, ${TranslateB.y}px)`;
+    }, 16);
+    // let scaleValue = 1;
+    // let x = 0;
+    // setInterval(() => {
+    //     planet.style.transform = `scale(${scaleValue})`;
+    //     x++;
+    //     scaleValue = Math.cos(x / 30) / 2 + 2;
+    // }, 10);
+</script>
